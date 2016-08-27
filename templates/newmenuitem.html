@@ -1,11 +1,36 @@
 <html>
 
 <head>
-<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+
+	  <!-- Compiled and minified JavaScript -->
+	 	 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+		  <style type="text/css">
+		    nav .brand-logo {
+		    position: absolute;
+		    color: #fff;
+		    display: inline-block;
+		    font-size: 20px;
+		    padding: 0;
+		    white-space: nowrap;
+		    /*margin-bottom: 10px ;*/
+	    	padding-left: 10px ;
+	    </style>
 	</head>
 <body>
-
-<h1>New Menu Item</h1>
+	<nav>
+	    <div class="nav-wrapper">
+	      <a href="/" class="brand-logo">Restaurant-Menu-App</a>
+	      <ul id="nav-mobile" class="right hide-on-med-and-down">
+	        <!-- <li><a href="sass.html">Sass</a></li>
+	        <li><a href="badges.html">Components</a></li>
+	        <li><a href="collapsible.html">JavaScript</a></li> -->
+	      </ul>
+	    </div>
+	  </nav>
+	  <div class='container'>
+	  	<h3>New Menu Item</h3>
 
 <form action="#" method = 'post'>
 
@@ -16,18 +41,31 @@
 		<input type ='text' size='30' name='description'>
 	<p>Price:</p>
 		<input type ='text' size='30' name='price'>
-	<p>Course:</p>
-		<input type ='radio'  name='course' value ='Starters'>Starters</br>
-		<input type ='radio'  name='course' value ='Main Course'>Main_course</br>
-		<input type ='radio'  name='course' value ='Beverage'>Beverage</br>
-		<input type ='radio' name='course' value ='Dessert'>Dessert</br>
-		
+		<h5>Course</h5>
+			          <p>
+			      <input name="course" type="radio" id="test1" value ='Starters' />
+			      <label for="test1">Starters</label>
+			    </p>
+			    <p>
+			      <input name="course" type="radio" id="test2" value ='Main Course'/>
+			      <label for="test2">MainCourse</label>
+			    </p>
+			    <p>
+			      <input name="course" type="radio" id="test3"  value ='Beverage'/>
+			      <label for="test3">Beverage</label>
+			    </p>
+			      <p>
+			        <input name="course" type="radio" id="test4" value ='Dessert' />
+			        <label for="test4">Dessert</label>
+			    </p>
 	</br>
 
 
-<input type='submit' value='Create Menu'>
+<input class="waves-effect waves-light btn" type='submit' value='Create Menu'>
 
 </form>
+	  </div>
+
 
 </body>
 </html>

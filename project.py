@@ -19,7 +19,6 @@ from flask import make_response
 from flask import request
 
 CLIENT_ID = json.loads(open('client_secret.json','r').read())['web']['client_id']
-print CLIENT_ID
 # CLIENT_ID = "1054080080208-epjk604hq2jbh8e8rad200q17v3pfn7q.apps.googleusercontent.com"
 # print CLIENT_ID
 # CLIENT_ID = "eJIBxeeX_g5_IkKPf_mFu5Zo"
@@ -33,15 +32,19 @@ session = DBSession()
 def showLogin():
 	state = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in xrange(32))
 	login_session['state']= state 
-	return render_template('login.html')
+	return render_template('login.html',STATE=state)
 
 @app.route('/gconnect',methods=['POST'])
 def gconnect():
-	if reques.args.get('state')!=login_session['state']:
+	state = request.form['state']
+	print state
+	print "hello"
+	if state!=login_session['state']:
 		response = make_response(json.dumps('Invalid state parameter '),401)		
 		response.headers['Content-Type'] = 'application/json'		
 		return response 
-	code = request.data 
+	code = request.form['auth']
+	print code
 	try :
 		oauth_flow = flow_from_clientsecrets('client_secret.json',scope='')
 		oauth_flow.redirect_uri = 'postmessage'		
@@ -247,7 +250,7 @@ def editMenuItem(restaurant_id, menu_id):
             editedItem.course = request.form['course']
         session.add(editedItem)
         session.commit()
-        return redirect(url_for('restaurantMenu', restaurant_id=restaurant_id))
+        return redirect(url_for('showMenu', restaurant_id=restaurant_id))
     else:
         return render_template('editmenuitem.html', restaurant_id=restaurant_id, menu_id=menu_id, i=editedItem)
 
@@ -258,7 +261,7 @@ def deleteMenuItem(restaurant_id, menu_id):
     if request.method == 'POST':
         session.delete(itemToDelete)
         session.commit()
-        return redirect(url_for('restaurantMenu', restaurant_id=restaurant_id))
+        return redirect(url_for('showMenu', restaurant_id=restaurant_id))
     else:
         return render_template('deletemenuitem.html', i=itemToDelete)
 

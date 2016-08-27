@@ -10,7 +10,7 @@
        <div id="signInButton">
           <span class="g-signin"
             data-scope="openid email"
-            data-clientid="YOUR_CLIENT_ID_GOES_HERE.apps.googleusercontent.com"
+            data-clientid="599952623818-5d1gs4neem2p3pvee4n9s6ifjfo9pitm.apps.googleusercontent.com"
             data-redirecturi="postmessage"
             data-accesstype="offline"
             data-cookiepolicy="single_host_origin"
@@ -27,22 +27,29 @@
         			$('#signInButton').attr('style','display:none');
         			$.ajax ({
         				type:'POST',
-        				url : '/gconnect?state={{STATE}}',
-        				processData : false ,
-        				contentType : 'application/octet-stream;charset=utf-8',
-        				data : authResult['code'],
+        				url : '/gconnect',
+        				data : {'auth': authResult['code'], 'state':'{{STATE}}'},
         				success : function(result){
-        					if (result){
+        					if(result)
+        					{
         						$('#result').html('Login Successful!<br>'+result+ "</br> Redirecting ...")
-        						setTimeout(function()){
+        						setTimeout(function()
+        						{
         							window.location.href= "/restaurant";
         						}, 4000) ;
-        					} else if (authResult['error']){
+        					}
+        					else if (authResult['error'])
+        					{
         						console.log('There was an error  :'+authResult['error']);
-        					} else {
+        					}
+        					else
+        					{
         						$('#result').html('Failed to make a server side call, check your conf');
         					}
         				}
+        			});
+        		}
+        	}
         </script>
   </body>
   </html>

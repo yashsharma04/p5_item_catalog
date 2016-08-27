@@ -2,33 +2,71 @@
 <html>
 <head>
 	<title></title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <style type="text/css">
+    nav .brand-logo {
+    position: absolute;
+    color: #fff;
+    display: inline-block;
+    font-size: 20px;
+    padding: 0;
+    white-space: nowrap;
+    /*margin-bottom: 10px ;*/
+    padding-left: 10px ;
+    </style>
 </head>
 <body>
-	<h1>{{restaurant.name}}</h1>
-	{% with messages = get_flashed_messages() %}
-	{% if messages %}
-		<ul>
-		{% for message in messages  %}
-			<li><strong>{{message}}</strong></li>
-		{% endfor%}
-		</ul>
-		{% endif %}
-	{% endwith %}
+		<nav>
+	    <div class="nav-wrapper">
+	      <a href="/" class="brand-logo">Restaurant-Menu-App</a>
+	      <ul id="nav-mobile" class="right hide-on-med-and-down">
+	        <!-- <li><a href="sass.html">Sass</a></li>
+	        <li><a href="badges.html">Components</a></li>
+	        <li><a href="collapsible.html">JavaScript</a></li> -->
+	      </ul>
+	    </div>
+	  </nav>
+	  <div class='container'>
+	  	
+	  
+		<h3>{{restaurant.name}}</h3>
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			<ul>
+			{% for message in messages  %}
+				<li><strong>{{message}}</strong></li>
+			{% endfor%}	
+			</ul>
+			{% endif %}
+		{% endwith %}
+		<a href="{{url_for('newMenuItem',restaurant_id=restaurant.id)}}" style='margin:auto;margin-top: 10px ; margin-bottom: 10px ;' class="waves-effect waves-light btn">Create New Menu Item</a>
+		<!-- <a href="{{url_for('newMenuItem',restaurant_id=restaurant.id)}}">Create New Menu Item<br><br> </a> -->
 
-	<a href="{{url_for('newMenuItem',restaurant_id=restaurant.id)}}">Create New Menu Item<br><br> </a>
 
-	{% for i in items %}
-	{{i.name}}
-	</br>
-	{{i.description}}
-	</br>
-	{{i.price}}
-	</br>
-	<a href="{{url_for('editMenuItem',restaurant_id=restaurant.id,menu_id=i.id)}}">Edit</a>
-	</br>
-	<a href="{{url_for('deleteMenuItem',restaurant_id=restaurant.id,menu_id=i.id)}}">Delete</a>
-	</br>
-	</br>
-	{% endfor %}
+
+	     
+		{% for i in items %}
+		<div class="collection">
+		    <a href="#" class="active collection-item">{{i.name}}</a>
+	        <a href="#" class="collection-item ">{{i.description}}</a>
+	        <a href="#" class="collection-item">{{i.price}}</a>
+	        <a href="{{url_for('.editMenuItem',restaurant_id=restaurant.id,menu_id=i.id)}}" class="collection-item">Edit</a>
+      		<a href="{{url_for('deleteMenuItem',restaurant_id=restaurant.id,menu_id=i.id)}}" class="collection-item">Delete</a>
+
+		
+		<!-- </br>
+		</br>
+		</br>
+		<a href="{{url_for('editMenuItem',restaurant_id=restaurant.id,menu_id=i.id)}}">Edit</a>
+		</br>
+		<a href="{{url_for('deleteMenuItem',restaurant_id=restaurant.id,menu_id=i.id)}}">Delete</a>
+		</br>
+		</br> -->
+		</div>
+		{% endfor %}
+	</div>
 </body>
 </html>

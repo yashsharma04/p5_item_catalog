@@ -1,14 +1,44 @@
 <html>
 <head>
 	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <style type="text/css">
+    nav .brand-logo {
+    position: absolute;
+    color: #fff;
+    display: inline-block;
+    font-size: 20px;
+    padding: 0;
+    white-space: nowrap;
+    /*margin-bottom: 10px ;*/
+    padding-left: 10px ;
+
+}
+    </style>
 </head>
 <body>
-<h1> Edit Restaurant </h1>
-<form action="{{ url_for('editRestaurant',restaurant_id = restaurant.id)}}" method = 'post'>
-	<p>Name:</p>
-	<input type ='text' size='30' name='name' placeholder = '{{restaurant.name }}'>
-	<input type='submit' value='Edit'>
-	<a href = '{{url_for('showRestaurants')}}'> Cancel </a>
-</form>
+<nav>
+	    <div class="nav-wrapper">
+	      <a href="/" class="brand-logo">Restaurant-Menu-App</a>
+	      <ul id="nav-mobile" class="right hide-on-med-and-down">
+	        <!-- <li><a href="sass.html">Sass</a></li>
+	        <li><a href="badges.html">Components</a></li>
+	        <li><a href="collapsible.html">JavaScript</a></li> -->
+	      </ul>
+	    </div>
+	  </nav>
+	  <div class='container'>
+	  	<h4> Edit Restaurant </h4>
+		<form action="{{ url_for('editRestaurant',restaurant_id = restaurant.id)}}" method = 'post'>
+			<p>Name:</p>
+			<input type ='text' size='30' name='name' placeholder = '{{restaurant.name }}'>
+			<input class="waves-effect waves-light btn" type='submit' value='Edit'>
+			<a class="waves-effect waves-light btn" href = '{{url_for('showRestaurants')}}'> Cancel </a>
+		</form>
+	  </div>
+		
 </body>
 </html>

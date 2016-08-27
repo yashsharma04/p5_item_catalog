@@ -2,17 +2,48 @@
 <html>
 <head>
 	<title></title>
+	<!-- Compiled and minified JavaScript -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <style type="text/css">
+    nav .brand-logo {
+    position: absolute;
+    color: #fff;
+    display: inline-block;
+    font-size: 20px;
+    padding: 0;
+    white-space: nowrap;
+    /*margin-bottom: 10px ;*/
+    padding-left: 10px ;
+
+}
+    </style>
 </head>
 <body>
-	<h1>Are you sure you want to delete {{i.name}}?</h1>
+<nav>
+	    <div class="nav-wrapper">
+	      <a href="/" class="brand-logo">Restaurant-Menu-App</a>
+	      <ul id="nav-mobile" class="right hide-on-med-and-down">
+	        <!-- <li><a href="sass.html">Sass</a></li>
+	        <li><a href="badges.html">Components</a></li>
+	        <li><a href="collapsible.html">JavaScript</a></li> -->
+	      </ul>
+	    </div>
+	  </nav>
+	  <div class='container'>
+	  	<h4>Are you sure you want to delete {{i.name}}?</h4>
 	<form action="{{ url_for ('deleteMenuItem',restaurant_id=i.restaurant_id,menu_id=i.id)}}" method='post'>
 
-	<input type="submit" value='Del'>
+	<input class="waves-effect waves-light btn" type="submit" value='Delete'>
 	<!-- <input type="text" size='30' name="name" placeholder = '{{i.name}}' > -->
 
 	</form>
-	<a href="{{url_for('restaurantMenu',restaurant_id = i.restaurant_id)}}"> Cancel</a>
+	<a class="waves-effect waves-light btn" href="{{url_for('showMenu',restaurant_id = i.restaurant_id)}}" style='margin-top: 10px ;'> Cancel</a>
 		
+	  </div>
+	
 	
 </body>
 </html>

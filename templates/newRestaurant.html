@@ -1,13 +1,60 @@
 <html>
 <head>
 	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <style type="text/css">
+    nav .brand-logo {
+    position: absolute;
+    color: #fff;
+    display: inline-block;
+    font-size: 20px;
+    padding: 0;
+    white-space: nowrap;
+    /*margin-bottom: 10px ;*/
+    padding-left: 10px ;
+    </style>
 </head>
 <body>
-	<h1>New Restaurant</h1>
-	<form action="#" method = 'post'>
+		<nav>
+	    <div class="nav-wrapper">
+	      <a href="/" class="brand-logo">Restaurant-Menu-App</a>
+	      <ul id="nav-mobile" class="right hide-on-med-and-down">
+	        <!-- <li><a href="sass.html">Sass</a></li>
+	        <li><a href="badges.html">Components</a></li>
+	        <li><a href="collapsible.html">JavaScript</a></li> -->
+	      </ul>
+	    </div>
+	  </nav>
+	  <div class='container'>
+	  	<h4>New Restaurant</h4>
+	<!-- <form action="#" method = 'post'>
 		<p>Name:</p>
 		<input type ='text' size='30' name='name'>
 		<input type='submit' value='Create'>
-	</form>
+	</form> -->
+
+
+	<div class="row">
+    <form class="col s12" action='#' method='post'>
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="Name" id="first_name" type="text" name='name' class="validate">
+          <!-- <label for="first_name">Name</label> -->
+        </div>
+      </div>
+      <div class='row'>
+      	<input class="waves-effect waves-light btn" type='submit' value='Create'>
+      	<!-- <a >Create</a> -->
+      </div>
+
+      
+    </form>
+  </div>
+	  </div>
+	
+        
 </body>
 </html>
