@@ -24,9 +24,16 @@
 	    <div class="nav-wrapper">
 	      <a href="/" class="brand-logo">Restaurant-Menu-App</a>
 	      <ul id="nav-mobile" class="right hide-on-med-and-down">
-	        <!-- <li><a href="sass.html">Sass</a></li>
-	        <li><a href="badges.html">Components</a></li>
+	      	{%if 'username' not in session %}
+		    <li>
+				<a href="{{url_for('showLogin')}}">Click Here to Login </a>
+			{% else %}
+					<a href="{{url_for('disconnect')}}">Logout </a>
+			{% endif %}
+			</li>
+	        <!-- <li><a href="badges.html">Components</a></li>
 	        <li><a href="collapsible.html">JavaScript</a></li> -->
+
 	      </ul>
 	    </div>
 	  </nav>

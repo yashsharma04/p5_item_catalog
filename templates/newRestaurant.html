@@ -18,16 +18,23 @@
     </style>
 </head>
 <body>
-		<nav>
-	    <div class="nav-wrapper">
-	      <a href="/" class="brand-logo">Restaurant-Menu-App</a>
-	      <ul id="nav-mobile" class="right hide-on-med-and-down">
-	        <!-- <li><a href="sass.html">Sass</a></li>
-	        <li><a href="badges.html">Components</a></li>
-	        <li><a href="collapsible.html">JavaScript</a></li> -->
-	      </ul>
-	    </div>
-	  </nav>
+<nav>
+      <div class="nav-wrapper">
+        <a href="/" class="brand-logo">Restaurant-Menu-App</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          {%if 'username' not in session %}
+        <li>
+        <a href="{{url_for('showLogin')}}">Click Here to Login </a>
+      {% else %}
+          <a href="{{url_for('disconnect')}}">Logout </a>
+      {% endif %}
+      </li>
+          <!-- <li><a href="badges.html">Components</a></li>
+          <li><a href="collapsible.html">JavaScript</a></li> -->
+
+        </ul>
+      </div>
+    </nav>
 	  <div class='container'>
 	  	<h4>New Restaurant</h4>
 	<!-- <form action="#" method = 'post'>
